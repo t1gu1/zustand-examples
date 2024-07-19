@@ -1,54 +1,45 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
+import ChildComponentA from "@/components/ChildComponentA";
+import ChildComponentB from "@/components/ChildComponentB";
+import ChildComponentC from "@/components/ChildComponentC";
 
 export default function HomeScreen() {
   console.log("HomeScreen Rerender");
 
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 18,
-        backgroundColor: "black",
-      }}
-    >
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={{
-          flexDirection: "row",
-          gap: 8,
+          flex: 1,
+          flexDirection: "column",
           alignItems: "center",
-          marginBottom: 60,
+          justifyContent: "center",
+          gap: 18,
+          backgroundColor: "black",
+          padding: 60,
         }}
       >
-        <Text style={{ color: "white", textAlign: "center", fontSize: 30 }}>
-          Zustand Test
-        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 8,
+            alignItems: "center",
+            marginBottom: 40,
+          }}
+        >
+          <Text style={{ color: "white", textAlign: "center", fontSize: 30 }}>
+            Zustand Test
+          </Text>
 
-        <HelloWave />
+          <HelloWave />
+        </View>
+
+        <ChildComponentA />
+        <ChildComponentB />
+        <ChildComponentC />
       </View>
-
-      <ChildComponentA />
-    </View>
-  );
-}
-
-export function ChildComponentA() {
-  return (
-    <View
-      style={{
-        backgroundColor: "gray",
-        borderColor: "white",
-        borderWidth: 1,
-        padding: 20,
-      }}
-    >
-      <Text style={{ color: "white", textAlign: "center" }}>
-        ChildComponentA
-      </Text>
-    </View>
+    </ScrollView>
   );
 }
