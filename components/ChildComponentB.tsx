@@ -1,72 +1,38 @@
 import { useAppStore } from "@/store";
-import { View, Text, TouchableOpacity } from "react-native";
+import Box from "./Box";
+import Txt from "./Txt";
+import Button from "./Button";
 
 export default function ChildComponentB() {
-  const isBearsHigherThanBees = useAppStore(
-    (state) => state.bears > state.bees,
-  );
   const bees = useAppStore((state) => state.bees);
   const setBees = useAppStore((state) => state.setBees);
   const setTwoBeesByBears = useAppStore((state) => state.setTwoBeesByBears);
+  const isBearsHigherThanBees = useAppStore(
+    (state) => state.bears > state.bees,
+  );
 
   console.log("ChildComponentB");
 
   return (
-    <View
-      style={{
-        backgroundColor: "gray",
-        borderColor: "white",
-        borderWidth: 1,
-        padding: 20,
-      }}
-    >
-      <Text
+    <Box>
+      <Txt
         style={{
-          color: "white",
-          textAlign: "center",
           fontSize: 25,
           marginBottom: 20,
         }}
       >
         ChildComponentB
-      </Text>
+      </Txt>
 
-      <Text style={{ color: "white", textAlign: "center", marginBottom: 10 }}>
-        Got {bees} bees
-      </Text>
+      <Txt>Got {bees} bees</Txt>
 
-      <Text style={{ color: "white", textAlign: "center", marginBottom: 10 }}>
+      <Txt>
         {`There is more ${isBearsHigherThanBees ? "bears than bees" : "bees than bears"}`}
-      </Text>
+      </Txt>
 
-      <TouchableOpacity
-        onPress={() => setBees(bees + 1)}
-        style={{
-          borderWidth: 1,
-          borderColor: "white",
-          borderRadius: 8,
-          padding: 10,
-          backgroundColor: "#666",
-          marginBottom: 10,
-        }}
-      >
-        <Text style={{ color: "white", textAlign: "center" }}>Add one bee</Text>
-      </TouchableOpacity>
+      <Button onPress={() => setBees(bees + 1)}>Add one bee</Button>
 
-      <TouchableOpacity
-        onPress={() => setTwoBeesByBears()}
-        style={{
-          borderWidth: 1,
-          borderColor: "white",
-          borderRadius: 8,
-          padding: 10,
-          backgroundColor: "#666",
-        }}
-      >
-        <Text style={{ color: "white", textAlign: "center" }}>
-          Set two bees by bears
-        </Text>
-      </TouchableOpacity>
-    </View>
+      <Button onPress={() => setTwoBeesByBears()}>Set two bees by bears</Button>
+    </Box>
   );
 }

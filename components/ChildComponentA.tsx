@@ -1,5 +1,7 @@
 import { useAppStore } from "@/store";
-import { View, Text, TouchableOpacity } from "react-native";
+import Box from "./Box";
+import Txt from "./Txt";
+import Button from "./Button";
 
 export default function ChildComponentA() {
   const bears = useAppStore((state) => state.bears);
@@ -8,43 +10,19 @@ export default function ChildComponentA() {
   console.log("ChildComponentA");
 
   return (
-    <View
-      style={{
-        backgroundColor: "gray",
-        borderColor: "white",
-        borderWidth: 1,
-        padding: 20,
-      }}
-    >
-      <Text
+    <Box>
+      <Txt
         style={{
-          color: "white",
-          textAlign: "center",
           fontSize: 25,
           marginBottom: 20,
         }}
       >
         ChildComponentA
-      </Text>
+      </Txt>
 
-      <Text style={{ color: "white", textAlign: "center", marginBottom: 10 }}>
-        Got {bears} bears
-      </Text>
+      <Txt>Got {bears} bears</Txt>
 
-      <TouchableOpacity
-        onPress={() => setBears(bears + 1)}
-        style={{
-          borderWidth: 1,
-          borderColor: "white",
-          borderRadius: 8,
-          padding: 10,
-          backgroundColor: "#666",
-        }}
-      >
-        <Text style={{ color: "white", textAlign: "center" }}>
-          Add one bear
-        </Text>
-      </TouchableOpacity>
-    </View>
+      <Button onPress={() => setBears(bears + 1)}>Add one bear</Button>
+    </Box>
   );
 }

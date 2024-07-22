@@ -4,10 +4,10 @@ import { AppStore } from "..";
 interface AnotherExampleStore {
   anotherExample: {
     uiLanguage: "en" | "fr";
-    setUiLanguage: (uiLanguage: "en" | "fr") => void;
     currentTheme: "dark" | "light";
-    toggleTheme: () => void;
   };
+  setUiLanguage: (uiLanguage: "en" | "fr") => void;
+  toggleTheme: () => void;
 }
 
 const createAnotherExampleSlice: StateCreator<
@@ -18,21 +18,21 @@ const createAnotherExampleSlice: StateCreator<
 > = (set, _get) => ({
   anotherExample: {
     uiLanguage: "en",
-    setUiLanguage: (uiLanguage) => {
-      set((state) => ({
-        anotherExample: { ...state.anotherExample, uiLanguage },
-      }));
-    },
     currentTheme: "light",
-    toggleTheme: () => {
-      set(({ anotherExample }) => ({
-        anotherExample: {
-          ...anotherExample,
-          currentTheme:
-            anotherExample.currentTheme === "dark" ? "light" : "dark",
-        },
-      }));
-    },
+  },
+  // Keep setter outside of persist.partialize
+  setUiLanguage: (uiLanguage) => {
+    set((state) => ({
+      anotherExample: { ...state.anotherExample, uiLanguage },
+    }));
+  },
+  toggleTheme: () => {
+    set(({ anotherExample }) => ({
+      anotherExample: {
+        ...anotherExample,
+        currentTheme: anotherExample.currentTheme === "dark" ? "light" : "dark",
+      },
+    }));
   },
 });
 

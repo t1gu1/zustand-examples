@@ -4,6 +4,15 @@ import { HelloWave } from "@/components/HelloWave";
 import ChildComponentA from "@/components/ChildComponentA";
 import ChildComponentB from "@/components/ChildComponentB";
 import ChildComponentC from "@/components/ChildComponentC";
+import { useAppStore } from "@/store";
+
+// Outside call
+setTimeout(() => {
+  console.log(
+    "Outside Call: ",
+    useAppStore.getState().anotherExample.currentTheme,
+  );
+}, 1000);
 
 export default function HomeScreen() {
   console.log("HomeScreen Rerender");
@@ -36,6 +45,7 @@ export default function HomeScreen() {
           <HelloWave />
         </View>
 
+        {/* Components for the demo */}
         <ChildComponentA />
         <ChildComponentB />
         <ChildComponentC />

@@ -32,3 +32,13 @@ export default function RootLayout() {
     </ThemeProvider>
   );
 }
+
+// Remove deprecated warnings to not poluate the logs for the demo
+const consoleWarn = console.warn;
+const SUPPRESSED_WARNINGS = ["deprecated"];
+
+console.warn = function filterWarnings(msg, ...args) {
+  if (!SUPPRESSED_WARNINGS.some((entry) => msg.includes(entry))) {
+    consoleWarn(msg, ...args);
+  }
+};

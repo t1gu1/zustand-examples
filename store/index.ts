@@ -22,8 +22,8 @@ export const useAppStore = create<AppStore>()(
       name: "appStoreDemo",
       version: 0,
       storage: createJSONStorage(() => AsyncStorage), // Could be localstorage or sessionStorage
-      partialize: (state) => ({
-        anotherExample: state.anotherExample,
+      partialize: ({ anotherExample }) => ({
+        anotherExample,
       }),
     },
   ),

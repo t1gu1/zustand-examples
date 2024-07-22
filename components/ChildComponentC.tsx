@@ -1,71 +1,39 @@
 import { useAppStore } from "@/store";
-import { View, Text, TouchableOpacity } from "react-native";
+import Box from "./Box";
+import Txt from "./Txt";
+import Button from "./Button";
 
 export default function ChildComponentC() {
   const { uiLanguage, setUiLanguage, currentTheme, toggleTheme } = useAppStore(
-    (state) => state.anotherExample,
+    (state) => ({
+      ...state.anotherExample,
+      setUiLanguage: state.setUiLanguage,
+      toggleTheme: state.toggleTheme,
+    }),
   );
 
   console.log("ChildComponentC");
 
   return (
-    <View
-      style={{
-        backgroundColor: "gray",
-        borderColor: "white",
-        borderWidth: 1,
-        padding: 20,
-      }}
-    >
-      <Text
+    <Box>
+      <Txt
         style={{
-          color: "white",
-          textAlign: "center",
           fontSize: 25,
           marginBottom: 20,
         }}
       >
         ChildComponentC
-      </Text>
+      </Txt>
 
-      <Text style={{ color: "white", textAlign: "center", marginBottom: 10 }}>
-        Lang: {uiLanguage}
-      </Text>
+      <Txt>Lang: {uiLanguage}</Txt>
 
-      <Text style={{ color: "white", textAlign: "center", marginBottom: 10 }}>
-        Current theme: {currentTheme}
-      </Text>
+      <Txt>Current theme: {currentTheme}</Txt>
 
-      <TouchableOpacity
-        onPress={() => setUiLanguage(uiLanguage === "fr" ? "en" : "fr")}
-        style={{
-          borderWidth: 1,
-          borderColor: "white",
-          borderRadius: 8,
-          padding: 10,
-          backgroundColor: "#666",
-          marginBottom: 10,
-        }}
-      >
-        <Text style={{ color: "white", textAlign: "center" }}>
-          Toogle UI language
-        </Text>
-      </TouchableOpacity>
+      <Button onPress={() => setUiLanguage(uiLanguage === "fr" ? "en" : "fr")}>
+        Toogle UI language
+      </Button>
 
-      <TouchableOpacity
-        onPress={() => toggleTheme()}
-        style={{
-          borderWidth: 1,
-          borderColor: "white",
-          borderRadius: 8,
-          padding: 10,
-          backgroundColor: "#666",
-        }}
-      >
-        <Text style={{ color: "white", textAlign: "center" }}>
-          Toggle Current Theme
-        </Text>
-      </TouchableOpacity>
-    </View>
+      <Button onPress={() => toggleTheme()}>Toggle Current Theme</Button>
+    </Box>
   );
 }
