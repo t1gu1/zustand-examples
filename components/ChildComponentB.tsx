@@ -4,12 +4,8 @@ import Txt from "./Txt";
 import Button from "./Button";
 
 export default function ChildComponentB() {
-  const bees = useAppStore((state) => state.bees);
-  const setBees = useAppStore((state) => state.setBees);
-  const setTwoBeesByBears = useAppStore((state) => state.setTwoBeesByBears);
-  const isBearsHigherThanBees = useAppStore(
-    (state) => state.bears > state.bees,
-  );
+  const bears = useAppStore((state) => state.bears);
+  const setBears = useAppStore((state) => state.setBears);
 
   console.log("ChildComponentB");
 
@@ -24,15 +20,9 @@ export default function ChildComponentB() {
         ChildComponentB
       </Txt>
 
-      <Txt>Got {bees} bees</Txt>
+      <Txt>Got {bears} bears</Txt>
 
-      <Txt>
-        {`There is more ${isBearsHigherThanBees ? "bears than bees" : "bees than bears"}`}
-      </Txt>
-
-      <Button onPress={() => setBees(bees + 1)}>Add one bee</Button>
-
-      <Button onPress={() => setTwoBeesByBears()}>Set two bees by bears</Button>
+      <Button onPress={() => setBears(bears + 1)}>Add one bear</Button>
     </Box>
   );
 }
