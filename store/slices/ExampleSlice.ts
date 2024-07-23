@@ -13,11 +13,11 @@ const createExampleSlice: StateCreator<AppStore, [], [], ExampleStore> = (
   set,
   get,
 ) => ({
-  bears: 0,
+  bears: 2,
   setBears: (bears) => {
     set({ bears });
   },
-  bees: 0,
+  bees: 4,
   setBees: (bees) => {
     set({ bees });
   },

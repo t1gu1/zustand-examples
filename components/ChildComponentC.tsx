@@ -5,10 +5,21 @@ import Button from "./Button";
 
 export default function ChildComponentC() {
   const uiLanguage = useAppStore((state) => state.anotherExample.uiLanguage);
-
   const currentTheme = useAppStore(
     (state) => state.anotherExample.currentTheme,
   );
+  const setUiLanguage = useAppStore((state) => state.setUiLanguage);
+  const toggleTheme = useAppStore((state) => state.toggleTheme);
+
+  // Don't do that
+  // const { uiLanguage, currentTheme, setUiLanguage, toggleTheme } = useAppStore(
+  //   (state) => ({
+  //     uiLanguage: state.anotherExample.uiLanguage,
+  //     currentTheme: state.anotherExample.currentTheme,
+  //     setUiLanguage: state.setUiLanguage,
+  //     toggleTheme: state.toggleTheme,
+  //   }),
+  // );
 
   console.log("ChildComponentC");
 

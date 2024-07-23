@@ -1,4 +1,3 @@
-import { Platform } from "react-native";
 import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
@@ -15,14 +14,17 @@ export type AppStore = ExampleStore & AnotherExampleStore;
 export const useAppStore = create<AppStore>()(
   persist(
     (...a) => ({
+      // Slices
       ...createExampleSlice(...a),
       ...createAnotherExampleSlice(...a),
     }),
     {
       name: "appStoreDemo",
       version: 0,
-      storage: createJSONStorage(() => AsyncStorage), // Could be localstorage or sessionStorage
+      // Could be localstorage or sessionStorage
+      storage: createJSONStorage(() => AsyncStorage),
       partialize: ({ anotherExample }) => ({
+        // Define what to keep in storage
         anotherExample,
       }),
     },

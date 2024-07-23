@@ -9,7 +9,6 @@ export default function Box({ children, style, ...rest }: ViewProps) {
         borderColor: "white",
         borderWidth: 1,
         padding: 20,
-        minWidth: 400,
         ...style,
       }}
     >
