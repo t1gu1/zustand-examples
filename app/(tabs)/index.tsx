@@ -41,8 +41,6 @@ export default function HomeScreen() {
           <Text style={{ color: "white", textAlign: "center", fontSize: 30 }}>
             Zustand Test
           </Text>
-
-          <HelloWave />
         </View>
 
         {/* Components for the demo */}
