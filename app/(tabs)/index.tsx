@@ -8,10 +8,7 @@ import { useAppStore } from "@/store";
 
 // Outside call
 setTimeout(() => {
-  console.log(
-    "Outside Call: ",
-    useAppStore.getState().anotherExample.currentTheme,
-  );
+  console.log("Outside Call: ", useAppStore.getState().general.currentTheme);
 }, 1000);
 
 export default function HomeScreen() {

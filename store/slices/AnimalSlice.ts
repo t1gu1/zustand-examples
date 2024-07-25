@@ -1,7 +1,7 @@
 import { StateCreator } from "zustand";
 import { AppStore } from "..";
 
-interface ExampleStore {
+interface AnimalSlice {
   bears: number;
   setBears: (bears: number) => void;
   bees: number;
@@ -9,7 +9,7 @@ interface ExampleStore {
   setTwoBeesByBears: () => void;
 }
 
-const createExampleSlice: StateCreator<AppStore, [], [], ExampleStore> = (
+const createAnimalSlice: StateCreator<AppStore, [], [], AnimalSlice> = (
   set,
   get,
 ) => ({
@@ -27,5 +27,5 @@ const createExampleSlice: StateCreator<AppStore, [], [], ExampleStore> = (
   },
 });
 
-export { createExampleSlice };
-export type { ExampleStore };
+export { createAnimalSlice };
+export type { AnimalSlice };

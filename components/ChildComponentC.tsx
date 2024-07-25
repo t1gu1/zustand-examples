@@ -4,12 +4,10 @@ import Txt from "./Txt";
 import Button from "./Button";
 
 export default function ChildComponentC() {
-  const uiLanguage = useAppStore((state) => state.anotherExample.uiLanguage);
-  const currentTheme = useAppStore(
-    (state) => state.anotherExample.currentTheme,
-  );
-  const setUiLanguage = useAppStore((state) => state.setUiLanguage);
-  const toggleTheme = useAppStore((state) => state.toggleTheme);
+  const uiLanguage = useAppStore(({ general }) => general.uiLanguage);
+  const currentTheme = useAppStore(({ general }) => general.currentTheme);
+  const setUiLanguage = useAppStore(({ setUiLanguage }) => setUiLanguage);
+  const toggleTheme = useAppStore(({ toggleTheme }) => toggleTheme);
 
   // Don't do that
   // const { uiLanguage, currentTheme, setUiLanguage, toggleTheme } = useAppStore(
